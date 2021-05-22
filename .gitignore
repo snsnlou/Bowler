@@ -115,4 +115,4 @@ ENV/
 .mypy_cache/
 
 # IDEA based IDEs
-.idea
+.idearoot_key
