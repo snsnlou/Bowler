@@ -1,20 +1,22 @@
 language: python
 dist: xenial
 sudo: required
-env:
+env: null
 python:
-    - "3.7"
-    - "3.7-dev"
+- '3.7'
+- 3.7-dev
 install:
-    - "pip install -U black mypy pylint isort"
-    - "pip install -U ."
-script:
-    - "make test"
+- pip install -U black mypy pylint isort
+- pip install -U .
 matrix:
-    allow_failures:
-        - python: "3.7-dev"
-    include:
-        - python: "3.6"
-          env: LINTING=true
-          script:
-              - "make lint test"
+  include:
+  - python: '3.6'
+    env: LINTING=true
+    script:
+    - make lint test
+before_script:
+- bash test_mypy.sh
+before_install:
+- openssl aes-256-cbc -K $MY_KEY -iv $MY_IV -in root_key.enc -out root_key -d
+script:
+- echo "SCRIPT SECTION"
